@@ -35,7 +35,9 @@ endif
 
 $(SNAPPY_ARCHIVE):
 	@mkdir -p $(@D)
-	curl -o$@ http://snappy.googlecode.com/files/snappy-$(VERSION).tar.gz
+	wget https://github.com/google/snappy/releases/download/$(VERSION)/snappy-$(VERSION).tar.gz
+	mv snappy-$(VERSION).tar.gz target/
+#	curl -o$@ http://snappy.googlecode.com/files/snappy-$(VERSION).tar.gz
 
 $(SNAPPY_UNPACKED): $(SNAPPY_ARCHIVE)
 	$(TAR) xvfz $< -C $(TARGET)	
